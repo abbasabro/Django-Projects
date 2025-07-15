@@ -36,7 +36,7 @@ To run this project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/abbasabro/Django-Projects.git](https://github.com/abbasabro/Django-Projects.git)
+    git clone [https://github.com/abbasabro/Django-Projects.git]
     cd Django-Projects/expense
     ```
  
@@ -53,7 +53,6 @@ To run this project locally:
     ```bash
     pip install -r requirements.txt
     ```
-    *(If you haven't created `requirements.txt` yet, go into the `expense-tracker` directory, activate your venv, and run `pip freeze > requirements.txt`)*
 
 4.  **Set up PostgreSQL database:**
     Ensure you have PostgreSQL installed and running. Create a database named `expense` and a user `postgres` with password `admin` (matching the `DATABASES` settings). You might need to adjust these credentials in `expense-tracker/expense/settings.py` for your local setup or, ideally, use environment variables for security.
