@@ -100,6 +100,47 @@ The Image Resizer offers the following core functionalities:
 * **Image Processing:** Pillow (Python Imaging Library fork)
 * **File Storage:** Django's `ImageField` and media file handling.
 
+---
+
+## 📧 Email OTP Sending
+
+The "Email OTP Sending" project demonstrates how to implement a custom user model in Django and integrate email-based One-Time Password (OTP) authentication for user login. This project moves away from traditional username/password authentication by allowing users to log in using their phone number (acting as the primary identifier) and a dynamically generated OTP sent to their associated email.
+
+This project delves into:
+
+* **Custom User Model:** Implementing `AbstractUser` and a custom `UserManager` to define a user model with `phone_number` as the `USERNAME_FIELD`.
+* **Email Integration:** Sending emails using Django's built-in `send_mail` function, configured with an SMTP backend (e.g., Gmail).
+* **OTP Generation & Verification:** Generating random OTPs, storing them, and verifying them for user authentication.
+* **Secure Authentication Flow:** A basic, yet functional, OTP-based login process, with considerations for security (though production-grade systems would require more robust measures like rate limiting, expiry, etc.).
+
+### ✨ Features
+
+The Email OTP Sending project includes the following core functionalities:
+
+* **Phone Number Based Login:** Users initiate login by providing their registered phone number.
+* **OTP Generation:** A random 4-digit OTP is generated for the user.
+* **Email OTP Delivery:** The generated OTP is sent to the email address associated with the user's phone number.
+* **OTP Verification:** Users enter the received OTP to complete the login process.
+* **Dashboard Access:** Successful OTP verification grants access to a protected dashboard.
+* **Logout Functionality:** Securely logs the user out of their session.
+* **Custom User Model:** The application utilizes a custom user model where `phone_number` is the unique identifier, replacing the default `username`.
+
+### 🛠️ Technologies Used
+
+* **Backend:** Django (Python Web Framework), Django's Custom User Model, Django's Email Backend.
+* **Database:** PostgreSQL (using `psycopg2` for connectivity).
+* **Email Service:** Configured to use SMTP (e.g., Gmail's SMTP server).
+* **Frontend (HTML/CSS):** Basic HTML templates with Bootstrap for minimal styling.
+
+### ⚠️ Security Considerations (for production use)
+
+* **Email Credentials:** `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are hardcoded in `settings.py`. For production, these **MUST** be loaded from environment variables (e.g., using `python-decouple` or `django-environ`) and never committed to version control.
+* **2-Factor Authentication (2FA) for Sender Email:** If your sender email (e.g., Gmail) has 2FA enabled, you'll need to generate an "App password" and use that instead of your regular email password. Instructions for this are noted in the project's `settings.py`.
+* **OTP Robustness:** For a production system, consider:
+    * OTP expiry (e.g., 5-10 minutes).
+    * Rate limiting for OTP requests to prevent abuse.
+    * More secure OTP generation (e.g., using Django's built-in `secrets` module or a dedicated OTP library).
+    * Handling invalid phone numbers or emails more gracefully.
 
 ### 🛣️ Future Plans
 
