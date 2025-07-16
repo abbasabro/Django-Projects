@@ -70,6 +70,37 @@ To run this project locally:
 
     The application will be accessible at `http://127.0.0.1:8000/`.
 
+---
+
+## 🖼️ Image Resizer
+
+The "Image Resizer" is a utility project demonstrating automated image processing within a Django application. It leverages Django Signals and the Pillow library to create different-sized thumbnails whenever an original image is uploaded.
+
+This project was built to explore:
+
+* **Django Signals:** How to use `post_save` signals to trigger actions after an object is saved to the database.
+* **Image Processing:** Integrating `Pillow` (PIL Fork) for resizing and manipulating images.
+* **File Management:** Handling image uploads and saving derived files within Django's media system.
+
+### ✨ Features
+
+The Image Resizer offers the following core functionalities:
+
+* **Image Upload:** Users can upload original images through the Django admin interface (or a custom form, if built).
+* **Automated Thumbnail Generation:** Upon successful upload of an original image, the system automatically generates three different sizes of thumbnails:
+    * **Small:** 100x100 pixels
+    * **Medium:** 300x300 pixels
+    * **Large:** 700x700 pixels
+* **Thumbnail Storage:** The generated thumbnails are saved to a designated media directory, linked to the original image record in the database.
+* **Efficient Processing:** Uses `PIL.Image.Resampling.LANCZOS` for high-quality downsampling and `optimize=True, quality=95` for efficient storage.
+
+### 🛠️ Technologies Used
+
+* **Backend:** Django (Python Web Framework), Django Signals
+* **Image Processing:** Pillow (Python Imaging Library fork)
+* **File Storage:** Django's `ImageField` and media file handling.
+
+
 ### 🛣️ Future Plans
 
 This is just the beginning! I plan to expand this repository with more Django projects covering various topics such as:
